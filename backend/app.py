@@ -3,7 +3,9 @@ from flask_cors import CORS
 
 from config import Config
 from extensions import db, bcrypt, jwt
-
+from models.user import User
+from models.student import Student
+from models.attendance import Attendance
 
 def create_app():
     app = Flask(__name__)
@@ -21,6 +23,9 @@ def create_app():
         return {
             "message": "Backend Working 🚀"
         }
+
+    with app.app_context():
+        db.create_all()
 
     return app
 
