@@ -6,6 +6,7 @@ from extensions import db, bcrypt, jwt
 from models.user import User
 from models.student import Student
 from models.attendance import Attendance
+from routes.auth import auth_bp
 
 def create_app():
     app = Flask(__name__)
@@ -26,7 +27,8 @@ def create_app():
 
     with app.app_context():
         db.create_all()
-
+       
+    app.register_blueprint(auth_bp, url_prefix="/api/auth")
     return app
 
 
