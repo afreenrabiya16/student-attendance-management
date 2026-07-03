@@ -8,6 +8,7 @@ from models.student import Student
 from models.attendance import Attendance
 from routes.auth import auth_bp
 from routes.student import student_bp
+from routes.attendance import attendance_bp
 
 def create_app():
     app = Flask(__name__)
@@ -31,6 +32,7 @@ def create_app():
        
     app.register_blueprint(auth_bp, url_prefix="/api/auth")
     app.register_blueprint(student_bp, url_prefix="/api/students")
+    app.register_blueprint(attendance_bp, url_prefix="/api/attendance")
 
     print("\nRegistered Routes:")
     print(app.url_map)
